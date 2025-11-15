@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/testimonial/db" VERSION="20250819" COMMENT="XMLDB file for Moodle local_testimonial plugin"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+
+    <TABLE NAME="local_testimonial_tokens" COMMENT="Stores testimonial tokens sent to clients">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="token" TYPE="char" LENGTH="64" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="contactid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="email" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="timeexpires" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="timeused" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="status" TYPE="int" LENGTH="2" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Status of the token: 0 = Active, 1 = Used, 2 = Manually Expired"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="uniq_token" TYPE="unique" FIELDS="token"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="contactid" UNIQUE="false" FIELDS="contactid"/>
+      </INDEXES>
+    </TABLE>
+
+    <TABLE NAME="local_testimonial" COMMENT="Stores the submitted testimonials content">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="contactid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="timestamp" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="testimonial_type" TYPE="char" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="e.g., video or text"/>
+        <FIELD NAME="content_is_file" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1" SEQUENCE="false"/>
+        <FIELD NAME="content_fileid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID from the mdl_files table"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="idx_contactid" UNIQUE="false" FIELDS="contactid"/>
+      </INDEXES>
+    </TABLE>
+    
+  </TABLES>
+</XMLDB>

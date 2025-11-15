@@ -1,0 +1,115 @@
+body {
+    background-color: #f0f2f5;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.feedback-container {
+    background-color: #ffffff;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 550px;
+    text-align: left;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1c2a38;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #5a6470;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #f8f9fa;
+    color: #343a40;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: 1px solid #dee2e6;
+    margin: 20px 0 30px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.cta-button:hover {
+    background-color: #e9ecef;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.cta-button svg {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -1px;
+}
+
+.signature {
+    margin-top: 30px;
+    line-height: 1.7;
+}
+
+.testimonial-container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-header {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.videobox,
+.textform {
+    display: none;
+    margin-top: 20px;
+}
+
+.video-preview {
+    width: 100%;
+    height: 300px;
+    background: #f5f5f5;
+    border: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.button {
+    border-radius: 8px;
+    background-color: cadetblue;
+}

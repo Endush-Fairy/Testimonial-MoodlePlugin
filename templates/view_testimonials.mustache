@@ -1,0 +1,58 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>;.
+}}
+
+<h2>{{#str}} view_testimonials_heading, local_testimonial {{/str}}</h2>
+<a href="{{{ config.wwwroot }}}/local/testimonial/index.php" class="btn btn-secondary mb-3">{{#str}} back, core {{/str}}
+</a>
+{{#testimonials}}
+<table class="generaltable boxaligncenter">
+    <thead>
+        <tr>
+            <th class="header">{{#str}} clientemail, local_testimonial {{/str}}</th>
+            <th class="header">{{#str}} testimonialtype, local_testimonial {{/str}}</th>
+            <th class="header">{{#str}} testimonialcontent, local_testimonial {{/str}}</th>
+            <th class="header">{{#str}} submissiondate, local_testimonial {{/str}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#.}}
+            <tr>
+                <td>{{ clientemail }}</td>
+                <td>
+                    {{#is_video}}<span class="badge badge-primary">{{#str}} videotestimonial, local_testimonial {{/str}}</span>{{/is_video}}
+                    {{#is_text}}<span class="badge badge-info">{{#str}} texttestimonial, local_testimonial {{/str}}</span>{{/is_text}}
+                </td>
+                <td>
+                    {{#is_video}}
+                        <video width="320" height="240" controls preload="metadata">
+                            <source src="{{{ fileurl }}}#t=0.1" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                    {{/is_video}}
+                    {{#is_text}}
+                        <div style="white-space: pre-wrap; max-height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background: #f9f9f9;">{{ content }}</div>
+                    {{/is_text}}
+                </td>
+                <td>{{#userdate}} {{timestamp}}, %d %B %Y, %I:%M %p {{/userdate}}</td>
+            </tr>
+        {{/.}}
+    </tbody>
+</table>
+{{/testimonials}}
+{{^testimonials}}
+    {{> core/notification_info_message message=(get_string 'notestimonials' 'local_testimonial')}}
+{{/testimonials}}
